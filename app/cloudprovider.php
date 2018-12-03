@@ -86,43 +86,6 @@ class CloudProvider extends Controller {
     }
   }
 
-	function checkdmarc($f3) {
-    $this->error = FALSE;
-    $resultDMARCFound = FALSE;
-    $resultDMARCFoundList = array();
-
-		$this->logger->write( '[CloudProvider->checkdmarc] Start' );
-
-    $f3->scrub($_POST,"");
-
-    if( array_key_exists('domain', $_POST) ) {
-      $domain=$_POST['domain'];
-    } else {
-      $domain = $f3->get('PARAMS.domain');
-  		$f3->scrub($domain,"");
-    }
-    set_error_handler( array($this, 'dmarc_warning_handler'), E_WARNING);
-    $foundDMARCRecords = dns_get_record("_DMARC.".$domain, DNS_TXT );
-    restore_error_handler();
-    $this->logger->write( '[CloudProvider->checkdmarc] ' . $foundDMARCRecords);
-
-    if( $foundDMARCRecords ) {
-      $this->logger->write( '[CloudProvider->checkdmarc] DMARC found' );
-      $resultDMARCFound = True;
-      foreach( $foundDMARCRecords as &$foundDMARCRecord) {
-        array_push($resultDMARCFoundList, $foundDMARCRecord["entries"]);
-      }
-    } else {
-      $this->logger->write( '[CloudProvider->checkdmarc] DMARC not found' );
-    }
-
-    if( $this->error ) {
-		  echo json_encode(array('error' => $this->error));
-    } else {
-		  echo json_encode(array('dmarc' => $resultDMARCFound, 'dmarclist' => $resultDMARCFoundList));
-    }
-  }
-
 	function checkspf($f3) {
     $this->error = FALSE;
     $resultSPFFound = FALSE;
