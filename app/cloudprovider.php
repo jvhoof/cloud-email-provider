@@ -56,16 +56,33 @@ class CloudProvider extends Controller {
             }
         }
       }
+      $resultDMARCFound = FALSE;
+      $resultDMARCFoundList = array();
+  
+      $this->logger->write( '[CloudProvider->checkdmarc] Start' );
+  
+      set_error_handler( array($this, 'dmarc_warning_handler'), E_WARNING);
+      $foundDMARCRecords = dns_get_record("_DMARC.".$domain, DNS_TXT );
+      restore_error_handler();
+      $this->logger->write( '[CloudProvider->checkdmarc] ' . $foundDMARCRecords);
+  
+      if( $foundDMARCRecords ) {
+        $this->logger->write( '[CloudProvider->checkdmarc] DMARC found' );
+        $resultDMARCFound = True;
+        foreach( $foundDMARCRecords as &$foundDMARCRecord) {
+          array_push($resultDMARCFoundList, $foundDMARCRecord["entries"]);
+        }
+      } else {
+        $this->logger->write( '[CloudProvider->checkdmarc] DMARC not found' );
+      }
     } else {
       $this->logger->write( '[CloudProvider->checkmx] MX not found' );
     }
 
-//	  $this->logger->write( '[CloudProvider->checkmx] Finish' . $resultProviderList );
-//    $this->logger->write( '[CloudProvider->checkmx] finish: ' . $resultProviderList . " : " . var_export($this->cloudprovider[$resultProviderList], true));
     if( $this->error ) {
 		  echo json_encode(array('error' => $this->error));
     } else {
-		  echo json_encode(array('mx' => $resultMxFound, 'mxlist' => $resultMxFoundList, 'cloudprovider' => $resultProvider, 'cloudproviderlist' => $resultProviderList));
+		  echo json_encode(array('mx' => $resultMxFound, 'mxlist' => $resultMxFoundList, 'cloudprovider' => $resultProvider, 'cloudproviderlist' => $resultProviderList, 'dmarc' => $resultDMARCFound, 'dmarclist' => $resultDMARCFoundList ));
     }
   }
 
