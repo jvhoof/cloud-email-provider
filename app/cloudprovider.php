@@ -81,7 +81,7 @@ class CloudProvider extends Controller {
       $this->logger->write( '[CloudProvider->checkspf] Start' );
   
       set_error_handler( array($this, 'dmarc_warning_handler'), E_WARNING);
-      $foundDMARCRecords = dns_get_record($domain, DNS_TXT );
+      $foundSPFRecords = dns_get_record($domain, DNS_TXT );
       restore_error_handler();
       $this->logger->write( '[CloudProvider->checkspf] ' . $foundSPFRecords);
   
@@ -95,7 +95,7 @@ class CloudProvider extends Controller {
           }
         }
       } else {
-        $this->logger->write( '[CloudProvider->checkdmarc] SPF not found' );
+        $this->logger->write( '[CloudProvider->checkspf] SPF not found' );
       }
     } else {
       $this->logger->write( '[CloudProvider->checkmx] MX not found' );
