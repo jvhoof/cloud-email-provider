@@ -24,7 +24,7 @@ class Controller {
 
 	//! Instantiate class
 	function __construct($f3) {
-        $logger = new \Log("log/events.log");
+        $logger = new \Log("log/" . date("Ymd") . "events.log");
 		$this->logger=$logger;
 
         $logger->write("[Controller] Calling " . get_class($this));
