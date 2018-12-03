@@ -87,7 +87,6 @@ class CloudProvider extends Controller {
   
       if( $foundSPFRecords ) {
         foreach( $foundSPFRecords as &$foundSPFRecord) {
-          $this->logger->write( '[CloudProvider->checkspf] SPF? ' . $foundSPFRecord["txt"]);
           if (strpos($foundSPFRecord["txt"], "v=spf1") !== false) {
             $this->logger->write( '[CloudProvider->checkspf] SPF found' );
             $resultSPFFound = True;

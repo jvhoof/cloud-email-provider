@@ -69,6 +69,20 @@ $(function () /* anonymous func */ {
                 $("#resultDMARClist").html("");
                 $("#resultDMARClist").hide();                
             }
+            if( data["spf"] ) {
+                $("#resultSPF").html("<span class='label label-success'>Found</span> SPF Records");
+                $list = "<ul class='list-group'>";
+                for (len = data["spflist"].length, i=0; i<len; ++i) {
+                    $list += "<li class='list-group-item'>" + data["spflist"][i] + "</li>";
+                }
+                $list += "</ul>";
+                $("#resultSPFlist").html($list);                
+                $("#resultSPFlist").show();                
+            } else {
+                $("#resultSPF").html("<span class='label label-danger'>Unknown</span> SPF Records");                
+                $("#resultSPFlist").html("");
+                $("#resultSPFlist").hide();                
+            }
         }
     }); // end submit function
 })
