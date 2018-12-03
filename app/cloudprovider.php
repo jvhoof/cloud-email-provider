@@ -80,14 +80,14 @@ class CloudProvider extends Controller {
   
       $this->logger->write( '[CloudProvider->checkspf] Start' );
   
-      set_error_handler( array($this, 'dmarc_warning_handler'), E_WARNING);
+      set_error_handler( array($this, 'spf_warning_handler'), E_WARNING);
       $foundSPFRecords = dns_get_record($domain, DNS_TXT );
       restore_error_handler();
       $this->logger->write( '[CloudProvider->checkspf] ' . $foundSPFRecords);
   
       if( $foundSPFRecords ) {
         foreach( $foundSPFRecords as &$foundSPFRecord) {
-          $this->logger->write( '[CloudProvider->checkspf] SPF? ' . $foundSPFRecord["entries"]);
+          $this->logger->write( '[CloudProvider->checkspf] SPF? ' . print_r($foundSPFRecord));
           if (strpos($foundSPFRecord["entries"], "v=spf1") !== false) {
             $this->logger->write( '[CloudProvider->checkspf] SPF found' );
             $resultSPFFound = True;
