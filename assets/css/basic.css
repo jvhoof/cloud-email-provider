@@ -1,0 +1,40 @@
+body {
+  font-family: "lato", sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: #000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height:100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.hero-img.hero-default {
+    background-position: 50% 33%;
+    background-image: url("../img/hero-default.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-img {
+    color: #000;
+    position: relative;
+}
+
+.result {
+    display: none;
+}
+
+.cplist {
+    vertical-align: center;
+    text-align: center;
+}
+

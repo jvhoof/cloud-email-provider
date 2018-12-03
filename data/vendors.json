@@ -1,0 +1,67 @@
+{
+    "O365" : {
+        "pattern" : ["outlook"],
+        "name" : "Microsoft Office 365",
+        "logo" : "assets/img/logo/office365.png"
+    },
+    "GMAIL" : {
+        "pattern" : ["googlemail","google"],
+        "name" : "Google Mail",
+        "logo" : "assets/img/logo/gmail.png"
+    },
+    "PROOFPOINT" : {
+        "pattern" : ["ppe-hosted","pphosted"],
+        "name" : "Proofpoint Essentials",
+        "logo" : "assets/img/logo/proofpoint.png"
+    },
+    "MCAFEE" : {
+        "pattern" : ["mxlogic"],
+        "name" : "McAfee EOL",
+        "logo" : "assets/img/logo/mcafee.png"
+    },
+    "TRENDMICRO" : {
+        "pattern" : ["trendmicro"],
+        "name" : "Trend Micro Hosted Email Security",
+        "logo" : "assets/img/logo/trendmicro.png"
+    },
+    "SYMANTEC" : {
+        "pattern" : ["messagelabs"],
+        "name" : "Symantec Email Security.Cloud - MessageLabs",
+        "logo" : "assets/img/logo/symantec.png"
+    },    
+    "MIMECAST" : {
+        "pattern" : ["mimecast.com"],
+        "name" : "Mimecast",
+        "logo" : "assets/img/logo/mimecast.png"
+    },    
+    "FORCEPOINT" : {
+        "pattern" : ["mailcontrol.com"],
+        "name" : "Forcepoint - Websense",
+        "logo" : "assets/img/logo/forcepoint.png"
+    },    
+    "CISCO" : {
+        "pattern" : ["iphmx.com"],
+        "name" : "Cisco Cloud Email Security",
+        "logo" : "assets/img/logo/cisco.png"
+    },    
+    "DELL" : {
+        "pattern" : ["snwlhosted.com","snwlhostedeu.com","snwlhostedps.com"],
+        "name" : "Dell SonicWALL Hosted Email Security",
+        "logo" : "assets/img/logo/dell.png"
+    },    
+    "COMBELL" : {
+        "pattern" : ["mailprotect.be"],
+        "name" : "Combell Belgium",
+        "logo" : "assets/img/logo/combell.png"
+    },    
+    "MXRELAY" : {
+        "pattern" : ["mx-relay.com"],
+        "name" : "MX Relay NL",
+        "logo" : "assets/img/logo/mxrelay.png"
+    },    
+    "BARRACUDA" : {
+        "pattern" : ["ess.barracudanetworks.com"],
+        "name" : "Barracuda Essentials",
+        "logo" : "assets/img/logo/barracuda.png"
+    }
+}
