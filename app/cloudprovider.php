@@ -113,10 +113,10 @@ class CloudProvider extends Controller {
   }
   function dmarc_warning_handler($errno, $errstr) { 
       $this->logger->write( '[CloudProvider->checkdmarc] ERROR [' . $errno . '] ' . $errstr );
-      $this->error = TRUE;
+      $this->error = FALSE;
   }
   function spf_warning_handler($errno, $errstr) { 
       $this->logger->write( '[CloudProvider->checkspf] ERROR [' . $errno . '] ' . $errstr );
-      $this->error = TRUE;
+      $this->error = FALSE;
   }
 }
