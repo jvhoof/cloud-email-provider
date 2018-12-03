@@ -116,4 +116,8 @@ class CloudProvider extends Controller {
       $this->logger->write( '[CloudProvider->checkdmarc] ERROR [' . $errno . '] ' . $errstr );
       $this->error = TRUE;
   }
+  function spf_warning_handler($errno, $errstr) { 
+      $this->logger->write( '[CloudProvider->checkspf] ERROR [' . $errno . '] ' . $errstr );
+      $this->error = TRUE;
+  }
 }
